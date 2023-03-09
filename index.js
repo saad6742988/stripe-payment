@@ -20,7 +20,7 @@ app.post('/payment', async (req, res) => {
   );
   const paymentIntent = await stripe.paymentIntents.create({
     amount: amount,
-    currency: 'pkr',
+    currency: 'eur',
     customer: customer.id,
     receipt_email: email,
   description: description,
