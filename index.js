@@ -7,6 +7,8 @@ const stripe = require('stripe')('sk_test_51MjR2qFzX6REGCMcXCAcEx57EMCLnj0yAbiay
 
 app.post('/payment', async (req, res) => {
   const amount = req.query.amount
+   const email = req.query.email
+  const description = req.query.des
   console.log(amount)
 
   
@@ -20,6 +22,8 @@ app.post('/payment', async (req, res) => {
     amount: amount,
     currency: 'pkr',
     customer: customer.id,
+    receipt_email: email,
+  description: description,
     automatic_payment_methods: {
       enabled: true,
     },
