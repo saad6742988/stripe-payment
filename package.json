@@ -1,0 +1,19 @@
+{
+  "name": "stripe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "create-react-app": "^5.0.1",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.21",
+    "stripe": "^11.14.0"
+  }
+}
