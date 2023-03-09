@@ -37,4 +37,4 @@ app.get('/', async (req, res) => {
   res.send("<h1>Hello</h1>")
 });
 
-app.listen(8000,()=>{console.log('listening express server from heroku')})
+app.listen(process.env.PORT||8000,()=>{console.log('listening express server from heroku')})
