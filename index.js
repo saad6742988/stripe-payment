@@ -7,7 +7,7 @@ const stripe = require('stripe')('sk_test_51MjR2qFzX6REGCMcXCAcEx57EMCLnj0yAbiay
 
 app.post('/payment', async (req, res) => {
   const amount = req.query.amount
-   const email = req.query.email
+  const email = req.query.email
   const description = req.query.des
   console.log(amount)
 
@@ -20,19 +20,18 @@ app.post('/payment', async (req, res) => {
   );
   const paymentIntent = await stripe.paymentIntents.create({
     amount: amount,
-    currency: 'eur',
+    currency: 'pkr',
     customer: customer.id,
     receipt_email: email,
   description: description,
-    automatic_payment_methods: {
-      enabled: true,
-    },
+    payment_method_types:["card"],
   });
 
   res.json({
     paymentIntent: paymentIntent.client_secret,
     ephemeralKey: ephemeralKey.secret,
     customer: customer.id,
+    pid:paymentIntent.id,
     publishableKey: 'pk_test_51MjR2qFzX6REGCMcJyt9IjVHCk5r7XBx0BaSXDkNT93PN7EkCDW2JcldQGETSA4J3lTnEMVIbm8JlT2KA3vU45wJ00REMqnZlj'
   });
 });
@@ -41,4 +40,4 @@ app.get('/', async (req, res) => {
   res.send("<h1>Hello</h1>")
 });
 
-app.listen(process.env.PORT||8000,()=>{console.log('listening express server from heroku')})
+app.listen(process.env.PORT||8000,()=>{console.log('listening express server from railway app')})
