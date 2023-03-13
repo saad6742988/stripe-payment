@@ -26,12 +26,14 @@ app.post('/payment', async (req, res) => {
   description: description,
     payment_method_types:["card"],
   });
+  console.log(Date(paymentIntent.created))
 
   res.json({
     paymentIntent: paymentIntent.client_secret,
     ephemeralKey: ephemeralKey.secret,
     customer: customer.id,
     pid:paymentIntent.id,
+    timeStamp:paymentIntent.created,
     publishableKey: 'pk_test_51MjR2qFzX6REGCMcJyt9IjVHCk5r7XBx0BaSXDkNT93PN7EkCDW2JcldQGETSA4J3lTnEMVIbm8JlT2KA3vU45wJ00REMqnZlj'
   });
 });
@@ -40,4 +42,7 @@ app.get('/', async (req, res) => {
   res.send("<h1>Hello</h1>")
 });
 
-app.listen(process.env.PORT||8000,()=>{console.log('listening express server from railway app')})
+
+
+
+app.listen(process.env.PORT||8000,()=>{console.log('listening express server from heroku')})
